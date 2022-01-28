@@ -13,12 +13,16 @@
 </head>
 
 <body class="bg-dark">
-    <div class="container bg-light py-5">
+    <div class="container bg-light rounded-3 my-5 py-5">
         <header>
-            <h1 class="text-center my-5">Search Book</h1>
+            <h1 class="text-center my-5"> Book Finder </h1>
 
             <!-- search field -->
-            <div class="input-group mx-auto w-50 my-5">
+            <div class="d-flex justify-content-center">
+                <h6 id="loading"></h6>
+            </div>
+            <div class="input-group mx-auto w-50 mb-5">
+
                 <input id="search-field" type="text" class="form-control" placeholder="Book Name">
                 <div>
                     <button onclick="searchBook()" type="button" class="btn btn-outline-dark">Search</button>

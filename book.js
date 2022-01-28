@@ -4,6 +4,9 @@ const searchResult = document.getElementById("search-result");
 const searchQuantity = document.getElementById("search-quantity");
 const emptySearch = document.getElementById("empty-search");
 const errorDiv = document.getElementById("error");
+const loadingField = document.getElementById("loading");
+
+loadingField.innerText = "Please write something to search";
 
 //function calling to search book result
 const searchBook = () => {
@@ -18,9 +21,11 @@ const searchBook = () => {
     if (searchText === "") {
         emptySearch.style.display = "block";
         errorDiv.style.display = "none";
+        loadingField.innerText = "Please write something to search"
     }
     else {
         emptySearch.style.display = "none";
+        loadingField.innerText = "Loading... Please Wait...";
 
         //  Book API URL
         const url = `https://openlibrary.org/search.json?q=${searchText}`;
@@ -30,6 +35,7 @@ const searchBook = () => {
     }
 };
 const displaySearchResult = (data) => {
+    loadingField.innerText = "";
 
     //display result quantity info
     searchQuantity.innerText = `Showing Results From ${data.numFound} Result`;
@@ -39,6 +45,7 @@ const displaySearchResult = (data) => {
     if (data.numFound === 0) {
         searchQuantity.innerText = "";
         errorDiv.style.display = "block";
+        emptySearch.style.display = "none";
     }
     else {
         errorDiv.style.display = "none";
